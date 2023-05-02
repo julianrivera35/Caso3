@@ -34,27 +34,28 @@ public class App {
         String concat = contrasenaInicial+salt;
         //El tamanio de la cadena de caracteres se le pasa al thread descifrador como una pista para saber que cantidad de combinaciones probar
         int tamConcat = concat.length();
-
+        Descifrador hashing = new Descifrador();
+        Random fuerzaBruta = new Random();
         //Calculamos el hash
         String hash =" ";
         if(numeroAlgoritmo == 1){
-            hash = Descifrador.SHA256(concat);
+            hash = hashing.SHA256(concat);
             System.out.println(hash);
             
         }
         else{
-            hash = Descifrador.SHA512(concat);
+            hash = hashing.SHA512(concat);
             System.out.println(hash);
         }
 
         //Como solo se puede trabajar con 1 o 2 threads entonces solo usamos un condicional.
         if(numeroThreads == 1){
-            Descifrador thread = new Descifrador(hash, tamConcat,numeroAlgoritmo,0);
+            Descifrador thread = new Descifrador(hash, tamConcat,numeroAlgoritmo,0,fuerzaBruta);
             thread.start();
         }
         else{
-            Descifrador thread1 = new Descifrador(hash, tamConcat,numeroAlgoritmo,1);
-            Descifrador thread2 = new Descifrador(hash, tamConcat,numeroAlgoritmo,2);
+            Descifrador thread1 = new Descifrador(hash, tamConcat,numeroAlgoritmo,0,fuerzaBruta);
+            Descifrador thread2 = new Descifrador(hash, tamConcat,numeroAlgoritmo,1, fuerzaBruta);
             thread1.start();
             thread2.start();
         }
