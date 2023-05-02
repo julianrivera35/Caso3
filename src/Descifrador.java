@@ -97,6 +97,7 @@ public class Descifrador extends Thread {
     public void run(){
         List<String> rta = new ArrayList<String>();
         List<String> rta2= new ArrayList<String>();
+        
         if((int)getId() == 0){
             rta=fuerzaBruta.fuerzaBruta((int)getnoCaracteres(), getHash(), (int)getAlgoritmo());
             System.out.println("Ha termiando el proceso con id: " + (int)getId());
