@@ -1,5 +1,4 @@
 import java.security.*;
-import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 
 public class Descifrador extends Thread {
@@ -66,6 +65,9 @@ public class Descifrador extends Thread {
         this.abarca = abarca;
     }
 
+    public void fuerzaBruta(String hash, int noCaracteres, int abarca){
+        int posibilidades = 0;
+    }
 
     public void run(){
 
