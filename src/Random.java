@@ -193,7 +193,7 @@ public class Random {
                                                                     for(char c7 = 'a'; c7 <= 'z'&& getCentinela(); c7++){
                                                                         for(char c8 = 'a'; c8 <= 'z'&& getCentinela(); c8++){
                                                                             cadena = ""+c1+c2+c3+c4+c5+c6+c7+c8;
-                                                                            System.out.println(cadena);
+                                                                            //System.out.println(cadena);
                                                                             try {
                                                                                 String hashCadena = hashing.SHA256(cadena);
                                                                                 if(hashCadena.equals(hash)){
