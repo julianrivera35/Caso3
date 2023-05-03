@@ -77,6 +77,12 @@ public class App {
         }
         teclado.close();
     }
+    
+    /**
+     * Metodo principal del programa
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         menu();
         String concat = contrasenaInicial+salt;
