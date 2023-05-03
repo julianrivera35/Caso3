@@ -3,30 +3,78 @@ import java.util.Scanner;
 
 public class App {
 
+    /**
+     * Contraseña que se va a intentar decifrar
+     */
     private static String contrasenaInicial;
+    /**
+     * Algoritmo de hash que vamos a utilizar 1 para 256, 2 para 512
+     */
     private static int numeroAlgoritmo;
+    /**
+     * Número de threads que van a buscar la solucion puede ser 1 o 2
+     */
     private static int numeroThreads;
+    /**
+     * Sal que se le va a adjuntar a la contraseña
+     */
     private static String salt;
     
-    //Este menu es solo para hacer pruebas rapidas de funcionamiento, al final se tiene que volver un input stream para leer el archivo.
+    /**
+     * Menu del programa donde vamos a recibir todos los parametros para la ejecucion
+     */
     public static void menu(){
-        //Menu donde pedimos los datos necesarios para correr el programa
         Scanner teclado = new Scanner(System.in);
-        System.out.println("Bienvenido al código de decodificación de Hash, prepárese para esperar 45 horas por su resultado ;D");
-        System.out.println("\n");
+        System.out.println("Bienvenido al código de decodificación de Hash");
         System.out.println("Por favor escriba la contraseña que trataremos de descifrar:");
-        contrasenaInicial = teclado.nextLine();
-        System.out.println("\n Por favor elija un algoritmo de hash:");
-        System.out.println("\n");
+        while(contrasenaInicial == null){
+            contrasenaInicial = teclado.nextLine();
+            if (contrasenaInicial.length()> 7 || contrasenaInicial.length()< 1 || !contrasenaInicial.matches("^[a-z]+$")){
+                contrasenaInicial = null;
+                System.out.println("La contraseña ingresada no es válida intente nuevamente");
+            }
+        }
+        System.out.println("Por favor elija un algoritmo de hash utilizando el número:");
         System.out.println("1. SHA-256");
         System.out.println("2. SHA-512");
-        numeroAlgoritmo = teclado.nextInt();
-        System.out.println("\n");
+        numeroAlgoritmo = 0;
+        while(numeroAlgoritmo == 0){
+            try{
+                numeroAlgoritmo = Integer.parseInt(teclado.nextLine());
+                if (numeroAlgoritmo != 1 && numeroAlgoritmo != 2 ){
+                    numeroAlgoritmo = 0;
+                    System.out.println("El número no es válido, debe ser entre 1 y 2");
+                }
+            }
+            catch (Exception e){
+                System.out.println("Debes ingresar un número");
+            }
+           
+        }
         System.out.println("Por favor digite un cadena de 2 caracteres (salt):");
-        salt = teclado.next();
-        System.out.println("\nDigite 1 o 2 para definir la cantidad de threads que se van a usar:");
-        numeroThreads = teclado.nextInt();
-
+        while(salt == null){
+            salt = teclado.next();
+            if (salt.length()> 2 || salt.length()< 1 || !salt.matches("^[a-z]+$")){
+                salt = null;
+                System.out.println("La sal ingresada no es válida intente nuevamente");
+            }
+        }
+        System.out.println("Digite 1 o 2 para definir la cantidad de threads que se van a usar:");
+        numeroThreads = 0;
+        while(numeroThreads == 0){
+            try{
+                numeroThreads = Integer.parseInt(teclado.next());
+                if (numeroThreads != 1 && numeroThreads != 2 ){
+                    numeroThreads = 0;
+                    System.out.println("El número no es válido, debe ser entre 1 y 2");
+                }
+            }
+            catch (Exception e){
+                System.out.println("Debes ingresar un número ");
+                e.printStackTrace();
+            }
+           
+        }
         teclado.close();
     }
     public static void main(String[] args) throws Exception {
