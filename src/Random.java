@@ -184,7 +184,6 @@ public class Random {
                                     }
                                     else{
                                         if(noCaracteres == 8){
-                                            
                                             for(char c1 = 'a'; c1 <= 'z'&& getCentinela(); c1++){
                                                 for(char c2 = 'a'; c2 <= 'z'&& getCentinela(); c2++){
                                                     for(char c3 = 'a'; c3 <= 'z'&& getCentinela(); c3++){
@@ -194,8 +193,9 @@ public class Random {
                                                                     for(char c7 = 'a'; c7 <= 'z'&& getCentinela(); c7++){
                                                                         for(char c8 = 'a'; c8 <= 'z'&& getCentinela(); c8++){
                                                                             cadena = ""+c1+c2+c3+c4+c5+c6+c7+c8;
+                                                                            System.out.println(cadena);
                                                                             try {
-                                                                                String hashCadena = hashing.SHA512(cadena);
+                                                                                String hashCadena = hashing.SHA256(cadena);
                                                                                 if(hashCadena.equals(hash)){
                                                                                     encontrado = "y";
                                                                                     offCentinela();;
@@ -228,7 +228,7 @@ public class Random {
                                                                                 for(char c9 = 'a'; c8 <= 'z'&& getCentinela(); c9++){
                                                                                     cadena = ""+c1+c2+c3+c4+c5+c6+c7+c8+c9;
                                                                                     try {
-                                                                                        String hashCadena = hashing.SHA512(cadena);
+                                                                                        String hashCadena = hashing.SHA256(cadena);
                                                                                         if(hashCadena.equals(hash)){
                                                                                             encontrado = "y";
                                                                                             offCentinela();
