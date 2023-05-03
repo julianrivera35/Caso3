@@ -701,7 +701,7 @@ public class Random {
                                                                         for(char c8 = 'z'; c8 >= 'a'&& getCentinela(); c8--){
                                                                             cadena = ""+c1+c2+c3+c4+c5+c6+c7+c8;
                                                                             try {
-                                                                                String hashCadena = hashing.SHA512(cadena);
+                                                                                String hashCadena = hashing.SHA256(cadena);
                                                                                 if(hashCadena.equals(hash)){
                                                                                     encontrado = "y";
                                                                                     offCentinela();
@@ -734,7 +734,7 @@ public class Random {
                                                                                 for(char c9 = 'z'; c9 >= 'a'&& getCentinela(); c9--){
                                                                                     cadena = ""+c1+c2+c3+c4+c5+c6+c7+c8+c9;
                                                                                     try {
-                                                                                        String hashCadena = hashing.SHA512(cadena);
+                                                                                        String hashCadena = hashing.SHA256(cadena);
                                                                                         if(hashCadena.equals(hash)){
                                                                                             encontrado = "y";
                                                                                             offCentinela();
