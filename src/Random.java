@@ -511,8 +511,10 @@ public class Random {
         retorno.add(sal);
         retorno.add(hash);
         retorno.add(encontrado);
+        if (encontrado.equals("n")){
+            retorno = null;
+        }
         return retorno;
-        
     }
 
 
@@ -1015,6 +1017,9 @@ public class Random {
         retorno.add(sal);
         retorno.add(hash);
         retorno.add(encontrado);
+        if (encontrado.equals("n")){
+            retorno = null;
+        }
         return retorno;
 
 

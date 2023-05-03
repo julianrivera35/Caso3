@@ -95,33 +95,30 @@ public class Descifrador extends Thread {
     
 
     public void run(){
-        List<String> rta = new ArrayList<String>();
-        List<String> rta2= new ArrayList<String>();
+       
         
         if((int)getId() == 0){
+            List<String> rta = new ArrayList<String>();
             rta=fuerzaBruta.fuerzaBruta((int)getnoCaracteres(), getHash(), (int)getAlgoritmo());
             System.out.println("Ha termiando el proceso con id: " + (int)getId());
-        }
-        else{
-            if((int)getId() == 1){
-                rta2 = fuerzaBruta.fuerzaBrutaAlReves((int)getnoCaracteres(), getHash(), (int)getAlgoritmo());
-                System.out.println("Ha termiando el proceso con id: " + (int)getId());
+            if (rta == null){
+                //No haga nada
+            }
+            else{
+                System.out.println(rta);
             }
         }
-        
-        if(rta.size() !=0){
-            if(rta.get(rta.size()-1).equals("y")){
-                System.out.println(rta);
+        else if((int)getId() == 1){
+            List<String> rta2= new ArrayList<String>();
+            rta2 = fuerzaBruta.fuerzaBrutaAlReves((int)getnoCaracteres(), getHash(), (int)getAlgoritmo());
+            System.out.println("Ha termiando el proceso con id: " + (int)getId());
+            if (rta2 ==null){
+                //No haga nada
             }
             else{
                 System.out.println(rta2);
             }
-
         }
-        else{
-            System.out.println(rta2);
-        }
-        
 
     }
 }
